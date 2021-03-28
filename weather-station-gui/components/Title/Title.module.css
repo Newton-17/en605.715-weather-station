@@ -1,0 +1,12 @@
+/* src/components/Title/Title.css */
+.titleHeader {
+    background-color: #333333;
+    overflow: hidden;
+    border-bottom: lightgray;
+    border-bottom-style: solid;
+}
+
+.titleHeader h1 {
+    color: lightgray;
+    text-align: center;
+}
