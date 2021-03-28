@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Head from 'next/head';
-import Title from '../components/Title/Title'
-import Navbar from '../components/Navbar/Navbar'
-import Bargraph from '../components/Bargraph/Bargraph'
+import Title from '../components/Title/Title';
+import Navbar from '../components/Navbar/Navbar';
+import Bargraph from '../components/Bargraph/Bargraph';
 
 class WeatherStation extends Component {
     constructor() {
@@ -38,20 +38,26 @@ class WeatherStation extends Component {
             tempYData.push(splitLine[1]);
             humidityYData.push(splitLine[2]);
         }
+
+        console.log();
+
         this.setState({
             error: null,
             isLoaded: true,
             temperatureData: {
                 xdata: xdata,
                 ydata: tempYData,
-                title: "Temperature vs Time"
+                title: "Temperature vs Time",
+                current: tempYData[tempYData.length - 2]
             },
             humidityData: {
                 xdata: xdata,
                 ydata: humidityYData,
-                title: "Humidity vs Time"
+                title: "Humidity vs Time",
+                current: humidityYData[humidityYData.length - 2]
             }
-        })
+        });
+        
     }
 
 
@@ -66,11 +72,15 @@ class WeatherStation extends Component {
                     <Title />
                     <Navbar />
                 </div>
-                <div>
-                    <Bargraph xdata={this.state.temperatureData.xdata} ydata={this.state.temperatureData.ydata} title={this.state.temperatureData.title} />
+                <div className="weatherHeader">
+                    <h3>Current Temperature: {this.state.temperatureData.current}</h3>
+                    <h3>Current Humidity: {this.state.humidityData.current}</h3>
                 </div>
                 <div>
-                    <Bargraph xdata={this.state.humidityData.xdata} ydata={this.state.humidityData.ydata} title={this.state.humidityData.title} />
+                    <Bargraph xdata={this.state.temperatureData.xdata} ydata={this.state.temperatureData.ydata} ylabel="Temperature F" title={this.state.temperatureData.title} />
+                </div>
+                <div>
+                    <Bargraph xdata={this.state.humidityData.xdata} ydata={this.state.humidityData.ydata} ylabel="Humidity %" title={this.state.humidityData.title} />
                 </div>
             </div>
 

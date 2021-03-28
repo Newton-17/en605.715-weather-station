@@ -22,7 +22,7 @@ export default class Bargraph extends Component {
             labels: this.props.xdata,
             datasets: [
               {
-                label: this.props.title,
+                label: this.props.ylabel,
                 data: this.props.ydata,
                 //data: [12, 19, 3, 5, 2, 3],
                 fill: false,
@@ -42,9 +42,14 @@ export default class Bargraph extends Component {
                 },
               ],
             },
+            title: {
+              display: true,
+              fontSize: 16,
+              text: this.props.title
+            }
           }
         return (
-            <div>
+            <div className={styles.linegraph}>
                  <Line data={data} options={options} />
             </div>
         )
