@@ -29,3 +29,5 @@
 /weather-station-gui/npm-debug.log*
 /weather-station-gui/yarn-debug.log*
 /weather-station-gui/yarn-error.log*
+
+/weather-station-gui/.next
